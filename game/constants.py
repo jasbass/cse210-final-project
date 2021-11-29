@@ -8,7 +8,13 @@ DEFAULT_SQUARE_SIZE = 20
 DEFAULT_FONT_SIZE = 20
 DEFAULT_TEXT_OFFSET = 4
 
-IMAGE_HERO = os.path.join(os.getcwd(), "./cse210-final-project/graphics/single.png")
+IMAGE_HERO = os.path.join(os.getcwd(), "./graphics/single.png")
+
+PLAYER_SPEED = 3
+ENEMY_SPEED = 2
+
+TILESIZE = 32
+
 # IMAGE_BALL = os.path.join(os.getcwd(), "./batter/assets/ball.png")
 
 # SOUND_START = os.path.join(os.getcwd(), "./batter/assets/start.wav")

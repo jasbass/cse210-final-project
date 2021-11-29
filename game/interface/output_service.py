@@ -65,38 +65,38 @@ class OutputService:
         texture = self._textures[image]
         raylibpy.draw_texture(texture, x, y, raylibpy.WHITE)
 
-    def draw_actor(self, actor):
+    def draw_sprite(self, sprite):
         """Renders the given actor's text on the screen.
 
         Args:
             self (OutputService): An instance of OutputService.
             actor (Actor): The actor to render.
         """ 
-        position = actor.get_position()
+        position = sprite.get_position()
         x = position.get_x()
         y = position.get_y()
-        width = actor.get_width()
-        height = actor.get_height()
+        width = sprite.get_width()
+        height = sprite.get_height()
 
-        if actor.has_image():
-            image = actor.get_image()
+        if sprite.has_image():
+            image = sprite.get_image()
             self.draw_image(x, y, image)
             #self.draw_image(x - width / 2, y - height / 2, image)
-        elif actor.has_text():
-            text = actor.get_text()
+        elif sprite.has_text():
+            text = sprite.get_text()
             self.draw_text(x, y, text, True)
         elif width > 0 and height > 0:
             self.draw_box(x, y, width, height)
         
-    def draw_actors(self, actors):
+    def draw_sprites(self, sprites):
         """Renders the given list of actors on the screen.
 
         Args:
             self (OutputService): An instance of OutputService.
             actors (list): The actors to render.
         """ 
-        for actor in actors:
-            self.draw_actor(actor)
+        for sprite in sprites:
+            self.draw_sprite(sprite)
     
     def flush_buffer(self):
         """Renders the screen.

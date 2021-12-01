@@ -19,10 +19,12 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-    player = Player()
-    player.set_position(Point(32,32))
+    player = Player(10, 10)
     player.set_velocity(Point(0,0))
-    cast['player'] = [player]
+    cast['player'] = []
+    cast['enemy_boundaries'] = []
+    cast['bushes'] = []
+    cast['enemies'] = []
 
 
 #Players, enemies, bushes, boundaries
@@ -43,7 +45,7 @@ def main():
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_sprites_action]
-    script["update"] = [move_sprites_action]
+    script["update"] = [move_sprites_action, handle_collisions_action]
     script["output"] = [draw_sprites_action]
 
 

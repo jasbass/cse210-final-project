@@ -13,4 +13,12 @@ class ControlSpritesAction(Action):
         dx = constants.PLAYER_SPEED * x
         dy = constants.PLAYER_SPEED * y
         for player in cast['player']:
+            if dx > 0:
+                player.set_direction('right')
+            if dx < 0:
+                player.set_direction('left')
+            if dy > 0:
+                player.set_direction('down')
+            if dy < 0:
+                player.set_direction('up')
             player.set_velocity(Point(dx, dy))

@@ -10,32 +10,38 @@ class UpdateEnemiesAction(Action):
         for enemy in cast['enemies']:
             for enemy_boundary in cast['enemy_boundaries']:
                 if self._physics_service.is_collision(enemy, enemy_boundary):
-                    direction = enemy.get_direction()
-                    if direction == 'left':
-                        x = enemy_boundary.get_right_edge()
-                        y = enemy.get_position().get_y()
-                        enemy.set_position(Point(x, y))
-                        enemy.set_velocity(Point(0,-constants.ENEMY_SPEED))
-                        enemy.set_direction('up')
+                    self._turn_enemy_clockwise(enemy, enemy_boundary)
+            for bush in cast['bushes']:
+                if self._physics_service.is_collision(enemy, bush):
+                    self._turn_enemy_clockwise(enemy, bush)
 
-                    if direction == 'right':
-                        x = enemy_boundary.get_left_edge() - enemy_boundary.get_width()
-                        y = enemy.get_position().get_y()
-                        enemy.set_position(Point(x, y))
-                        enemy.set_velocity(Point(0,constants.ENEMY_SPEED))
-                        enemy.set_direction('down')
+    def _turn_enemy_clockwise(self, enemy, object):
+        
+        direction = enemy.get_direction()
+        if direction == 'left':
+            x = object.get_right_edge()
+            y = enemy.get_position().get_y()
+            enemy.set_position(Point(x, y))
+            enemy.set_velocity(Point(0,-constants.ENEMY_SPEED))
+            enemy.set_direction('up')
 
-                    if direction == 'up':
-                        x = enemy.get_position().get_x()
-                        y = enemy_boundary.get_bottom_edge()
-                        enemy.set_position(Point(x, y))
-                        enemy.set_velocity(Point(constants.ENEMY_SPEED, 0))
-                        enemy.set_direction('right')
+        if direction == 'right':
+            x = object.get_left_edge() - object.get_width()
+            y = enemy.get_position().get_y()
+            enemy.set_position(Point(x, y))
+            enemy.set_velocity(Point(0, constants.ENEMY_SPEED))
+            enemy.set_direction('down')
 
-                    if direction == 'down':
-                        x = enemy.get_position().get_x()
-                        y = enemy_boundary.get_top_edge() - enemy_boundary.get_height()
-                        enemy.set_position(Point(x, y))
-                        enemy.set_velocity(Point(-constants.ENEMY_SPEED, 0))
-                        enemy.set_direction('left')
-                
+        if direction == 'up':
+            x = enemy.get_position().get_x()
+            y = object.get_bottom_edge()
+            enemy.set_position(Point(x, y))
+            enemy.set_velocity(Point(constants.ENEMY_SPEED, 0))
+            enemy.set_direction('right')
+
+        if direction == 'down':
+            x = enemy.get_position().get_x()
+            y = object.get_top_edge() - object.get_height()
+            enemy.set_position(Point(x, y))
+            enemy.set_velocity(Point(-constants.ENEMY_SPEED, 0))
+            enemy.set_direction('left')

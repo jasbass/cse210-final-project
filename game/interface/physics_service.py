@@ -27,13 +27,3 @@ class PhysicsService:
         rectangle2 = raylibpy.Rectangle(x2, y2, width2, height2)
 
         return raylibpy.check_collision_recs(rectangle1, rectangle2)
-
-    def is_vision_collision(self, vision, second):
-        x2 = second.get_position().get_x()
-        y2 = second.get_position().get_y()
-        width2 = second.get_width() - 1
-        height2 = second.get_height() - 1
-
-        rectangle2 = raylibpy.Rectangle(x2, y2, width2, height2)
-
-        return raylibpy.check_collision_recs(vision, rectangle2)

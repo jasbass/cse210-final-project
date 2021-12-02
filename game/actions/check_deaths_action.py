@@ -21,7 +21,13 @@ class CheckDeathsAction(Action):
                     vision.set_width(constants.MAX_X - vision_x)
                     vision.set_height(enemy.get_height())
                     if self._physics_service.is_collision(vision, player):
-                        cast['player'].remove(player) 
+                        delete_player = True
+                        for bush in cast['bushes']:
+                            if self._physics_service.is_collision(vision, bush):
+                                if (bush.get_position().get_x() - enemy_position.get_x()) < (player.get_position().get_x() - enemy_position.get_x()):
+                                    delete_player = False
+                        if delete_player:
+                            cast['player'].remove(player)
 
                 if enemy.get_direction() == 'left':
                     enemy_position = enemy.get_position()
@@ -32,7 +38,13 @@ class CheckDeathsAction(Action):
                     vision.set_width(enemy_position.get_x() + enemy.get_width())
                     vision.set_height(enemy.get_height())
                     if self._physics_service.is_collision(vision, player):
-                        cast['player'].remove(player) 
+                        delete_player = True
+                        for bush in cast['bushes']:
+                            if self._physics_service.is_collision(vision, bush):
+                                if (enemy_position.get_x() - bush.get_position().get_x()) < (enemy_position.get_x() - player.get_position().get_x()):
+                                    delete_player = False
+                        if delete_player:
+                            cast['player'].remove(player)
 
                 if enemy.get_direction() == 'up':
                     enemy_position = enemy.get_position()
@@ -43,7 +55,13 @@ class CheckDeathsAction(Action):
                     vision.set_width(enemy.get_width())
                     vision.set_height(enemy_position.get_y() + enemy.get_height())
                     if self._physics_service.is_collision(vision, player):
-                        cast['player'].remove(player) 
+                        delete_player = True
+                        for bush in cast['bushes']:
+                            if self._physics_service.is_collision(vision, bush):
+                                if (enemy_position.get_y() - bush.get_position().get_y()) < (enemy_position.get_y() - player.get_position().get_y()):
+                                    delete_player = False
+                        if delete_player:
+                            cast['player'].remove(player)
 
                 if enemy.get_direction() == 'down':
                     enemy_position = enemy.get_position()
@@ -54,4 +72,10 @@ class CheckDeathsAction(Action):
                     vision.set_width(enemy.get_width())
                     vision.set_height(constants.MAX_Y - vision_y)
                     if self._physics_service.is_collision(vision, player):
-                        cast['player'].remove(player) 
+                        delete_player = True
+                        for bush in cast['bushes']:
+                            if self._physics_service.is_collision(vision, bush):
+                                if (bush.get_position().get_y() - enemy_position.get_y()) < (player.get_position().get_y() - enemy_position.get_y()):
+                                    delete_player = False
+                        if delete_player:
+                            cast['player'].remove(player)

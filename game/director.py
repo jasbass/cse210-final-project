@@ -56,7 +56,7 @@ class Director:
                     enemy_boundary = EnemyBoundary(x, y)
                     self._cast['enemy_boundaries'].append(enemy_boundary)
                 if column == 'B':
-                    bush = Bush(x,y)
+                    bush = Bush(x, y)
                     self._cast['bushes'].append(bush)
                 if column == 'P':
                     player  = Player(x, y)

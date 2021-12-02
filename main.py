@@ -6,14 +6,16 @@ from game.sprites.point import Point
 from game.sprites.player import Player
 from game.actions.draw_sprites_action import DrawSpritesAction
 from game.actions.control_sprites_action import ControlSpritesAction
-from game.actions.move_sprites_action import MoveSpritesAction
-from game.actions.handle_collisions_action import HandleCollisionsAction
+from game.actions.move_sprites_vertical_action import MoveSpritesVerticalAction
+from game.actions.move_sprites_horizontal_action import MoveSpritesHorizontalAction
+from game.actions.handle_horizontal_collisions_action import HandleHorizontalCollisionsAction
+from game.actions.handle_vertical_collisions_action import HandleVerticalCollisionsAction
+from game.actions.update_enemies_action import UpdateEnemiesAction
 from game.interface.input_service import InputService
 from game.interface.output_service import OutputService
 from game.interface.physics_service import PhysicsService
 from game.interface.audio_service import AudioService
 # from game.brick import Brick
-
 
 def main():
 
@@ -21,13 +23,11 @@ def main():
     cast = {}
     player = Player(10, 10)
     player.set_velocity(Point(0,0))
-    cast['player'] = []
+    cast['ground'] = []
     cast['enemy_boundaries'] = []
     cast['bushes'] = []
     cast['enemies'] = []
-
-
-#Players, enemies, bushes, boundaries
+    cast['player'] = []
     
     # Create the script {key: tag, value: list}
     script = {}
@@ -39,16 +39,17 @@ def main():
 
     draw_sprites_action = DrawSpritesAction(output_service)
     control_sprites_action = ControlSpritesAction(input_service)
-    move_sprites_action = MoveSpritesAction()
-    handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
+    move_sprites_vertical_action = MoveSpritesVerticalAction()
+    move_sprites_horizontal_action = MoveSpritesHorizontalAction()
+    handle_vertical_collisions_action = HandleVerticalCollisionsAction(physics_service, audio_service)
+    handle_horizontal_collisions_action = HandleHorizontalCollisionsAction(physics_service, audio_service)
+    update_enemies_action = UpdateEnemiesAction(physics_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_sprites_action]
-    script["update"] = [move_sprites_action, handle_collisions_action]
+    script["update"] = [move_sprites_vertical_action, handle_vertical_collisions_action, move_sprites_horizontal_action, handle_horizontal_collisions_action, update_enemies_action]
     script["output"] = [draw_sprites_action]
-
-
 
     # Start the game
     output_service.open_window("Game")

@@ -14,15 +14,15 @@ class PhysicsService:
         """
         x1 = first.get_position().get_x()
         y1 = first.get_position().get_y()
-        width1 = first.get_width()
-        height1 = first.get_height()
+        width1 = first.get_width() - 1
+        height1 = first.get_height() - 1
 
         rectangle1 = raylibpy.Rectangle(x1, y1, width1, height1)
 
         x2 = second.get_position().get_x()
         y2 = second.get_position().get_y()
-        width2 = second.get_width()
-        height2 = second.get_height()
+        width2 = second.get_width() - 1
+        height2 = second.get_height() - 1
 
         rectangle2 = raylibpy.Rectangle(x2, y2, width2, height2)
 

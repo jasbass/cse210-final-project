@@ -9,7 +9,7 @@ class Enemy(Sprite):
         self.set_position(Point(x * constants.TILESIZE, y * constants.TILESIZE))
         self.set_width(constants.TILESIZE)
         self.set_height(constants.TILESIZE)
-        self.set_velocity(Point(1,0))
+        self.set_velocity(Point(constants.ENEMY_SPEED, 0))
         self._facing = 'right'
 
     def get_direction(self):

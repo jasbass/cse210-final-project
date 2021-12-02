@@ -11,6 +11,7 @@ from game.actions.move_sprites_horizontal_action import MoveSpritesHorizontalAct
 from game.actions.handle_horizontal_collisions_action import HandleHorizontalCollisionsAction
 from game.actions.handle_vertical_collisions_action import HandleVerticalCollisionsAction
 from game.actions.update_enemies_action import UpdateEnemiesAction
+from game.actions.check_deaths_action import CheckDeathsAction
 from game.interface.input_service import InputService
 from game.interface.output_service import OutputService
 from game.interface.physics_service import PhysicsService
@@ -44,11 +45,16 @@ def main():
     handle_vertical_collisions_action = HandleVerticalCollisionsAction(physics_service, audio_service)
     handle_horizontal_collisions_action = HandleHorizontalCollisionsAction(physics_service, audio_service)
     update_enemies_action = UpdateEnemiesAction(physics_service)
+    check_deaths_action = CheckDeathsAction(physics_service)
 
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [control_sprites_action]
-    script["update"] = [move_sprites_vertical_action, handle_vertical_collisions_action, move_sprites_horizontal_action, handle_horizontal_collisions_action, update_enemies_action]
+
+    script["update"] = [move_sprites_vertical_action, handle_vertical_collisions_action, 
+        move_sprites_horizontal_action, handle_horizontal_collisions_action, update_enemies_action,
+        check_deaths_action]
+
     script["output"] = [draw_sprites_action]
 
     # Start the game

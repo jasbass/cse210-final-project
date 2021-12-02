@@ -41,9 +41,9 @@ class Director:
             self._cue_action("update")
             self._cue_action("output")
 
-            # if len(self._cast["players"]) == 0:
-            #     # Game over
-            #     self._game_over_screen()
+            if len(self._cast["player"]) == 0:
+                # Game over
+                self._game_over_screen()
 
             if raylibpy.window_should_close():
                 self._keep_playing = False
@@ -52,6 +52,7 @@ class Director:
         tilemap = map.get_tilemap()
         for y, row in enumerate(tilemap):
             for x, column in enumerate(row):
+
                 if column == 'G':
                     enemy_boundary = EnemyBoundary(x, y)
                     self._cast['enemy_boundaries'].append(enemy_boundary)
@@ -75,6 +76,5 @@ class Director:
         for action in self._script[tag]:
             action.execute(self._cast)
 
-    # def _game_over_screen(self):
-    #     game_over = self._cast['game_over'][0]
-    #     game_over.set_text('Game Over')
+    def _game_over_screen(self):
+        print('Game Over')

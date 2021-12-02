@@ -34,7 +34,8 @@ class Director:
         
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
-        self.create_map(MapOne())
+        current_map = MapOne()
+        current_map.generate_map(self._cast)
 
         while self._keep_playing:
             self._cue_action("input")
@@ -47,25 +48,6 @@ class Director:
 
             if raylibpy.window_should_close():
                 self._keep_playing = False
-
-    def create_map(self, map):
-        tilemap = map.get_tilemap()
-        for y, row in enumerate(tilemap):
-            for x, column in enumerate(row):
-
-                if column == 'G':
-                    enemy_boundary = EnemyBoundary(x, y)
-                    self._cast['enemy_boundaries'].append(enemy_boundary)
-                if column == 'B':
-                    bush = Bush(x, y)
-                    self._cast['bushes'].append(bush)
-                if column == 'P':
-                    player  = Player(x, y)
-                    self._cast['player'].append(player)
-                if column == 'E':
-                    enemy = Enemy(x, y)
-                    self._cast['enemies'].append(enemy)
-
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.

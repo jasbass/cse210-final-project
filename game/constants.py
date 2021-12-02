@@ -10,7 +10,6 @@ DEFAULT_TEXT_OFFSET = 4
 
 IMAGE_HERO = os.path.join(os.getcwd(), "./graphics/single.png")
 IMAGE_BUSH = os.path.join(os.getcwd(), "./graphics/terrain.png")
-IMAGE_RED = os.path.join(os.getcwd(), "./graphics/red_square.png")
 
 PLAYER_SPEED = 5
 ENEMY_SPEED = 2

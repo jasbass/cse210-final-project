@@ -5,6 +5,7 @@ from game import constants
 class Ground(Sprite):
     def __init__(self, x, y):
         super().__init__()
+        self.set_text('F')
         self.set_position(Point(x * constants.TILESIZE, y * constants.TILESIZE))
         self.set_width(constants.TILESIZE)
         self.set_height(constants.TILESIZE)

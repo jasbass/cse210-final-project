@@ -4,24 +4,24 @@ from game.sprites.enemy import Enemy
 from game.sprites.bush import Bush
 from game.sprites.enemy_boundary import EnemyBoundary
 from game.sprites.ground import Ground
-from game.sprites.point import Point
 from game.sprites.door import Door
+from game.sprites.point import Point
 from game import constants
 
-class MapOne(Map):
+class MapFour(Map):
     def __init__(self) -> None:
         super().__init__()
         self._tilemap = [
-        'BBBBBBBBBBBDDBBBBBBBBBBBB',
+        'BBBBBBBBBBBBBBBBBBBBBBBBB',
         'B.........B...B.........B',
         'B.........B...B.........B',
+        'B.........B.D.B.........B',
         'B.........B...B.........B',
+        'B...B..B..B...B.........B',
+        'B...BBBB..B...B.........B',
+        'B......B..B...B.........B',
+        'B......B..B...B.........B',
         'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',

@@ -4,11 +4,11 @@ from game.sprites.enemy import Enemy
 from game.sprites.bush import Bush
 from game.sprites.enemy_boundary import EnemyBoundary
 from game.sprites.ground import Ground
-from game.sprites.point import Point
 from game.sprites.door import Door
+from game.sprites.point import Point
 from game import constants
 
-class MapOne(Map):
+class MapThree(Map):
     def __init__(self) -> None:
         super().__init__()
         self._tilemap = [
@@ -17,13 +17,13 @@ class MapOne(Map):
         'B.........B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
+        'B.........B...B..GGGGGGGB',
+        'B.........B.....G..E.E..B',
+        'B...BBB...B......GGGGGGGB',
+        'B.....B...B.............B',
+        'B...BBB...B...B.........B',
         'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
+        'B...BBB...B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',

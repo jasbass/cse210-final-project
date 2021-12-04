@@ -8,7 +8,7 @@ from game.sprites.point import Point
 from game.sprites.door import Door
 from game import constants
 
-class MapOne(Map):
+class MapEight(Map):
     def __init__(self) -> None:
         super().__init__()
         self._tilemap = [
@@ -19,11 +19,11 @@ class MapOne(Map):
         'B.........B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
+        'B...BBB...B...B.........B',
+        'B..B...B..B...B.........B',
+        'B...BBB...B...B.........B',
+        'B..B...B..B...B.........B',
+        'B...BBB...B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',
         'B.........B...B.........B',

@@ -12,25 +12,26 @@ class MapOne(Map):
     def __init__(self) -> None:
         super().__init__()
         self._tilemap = [
-        'BBBBBBBBBBBDDBBBBBBBBBBBB',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.....B...B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B...B.........B',
-        'B.........B.P.B.........B',
-        'BBBBBBBBBBBBBBBBBBBBBBBBB']
+        'BBBBBBBBBBBDDDBBBBBBBBBBB',
+        'BGGGGGGGG...............B',
+        'B.......EG..............B',
+        'BGGGGGGGG...............B',
+        'B...............GGGGGGGGB',
+        'B..............GE.......B',
+        'B...............GGGGGGGGB',
+        'BGGGGGGGG...............B',
+        'B.......EG..............B',
+        'BGGGGGGGG...............B',
+        'B...............GGGGGGGGB',
+        'B..............GE.......B',
+        'B...............GGGGGGGGB',
+        'BGGGGGGGG...............B',
+        'B.......EG..............B',
+        'BGGGGGGGG.......GGGGGGGGB',
+        'B..............GE.......B',
+        'B...............GGGGGGGGB',
+        'BBBBBBBBBBB.P.BBBBBBBBBBB',
+        '...........BBB...........']
 
     def get_tilemap(self):
         return self._tilemap

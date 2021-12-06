@@ -38,6 +38,7 @@ class Director:
         
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
+        self._intro_loop()
         self._change_map(self._maps[self._map_index])
 
         while self._keep_playing:
@@ -56,6 +57,9 @@ class Director:
 
             if raylibpy.window_should_close():
                 self._keep_playing = False
+
+    def _intro_loop(self):
+        pass
 
     def _get_next_map(self):
         self._map_index += 1

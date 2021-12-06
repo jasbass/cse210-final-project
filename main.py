@@ -1,8 +1,5 @@
-import random
 from game import constants
 from game.director import Director
-from game.sprites.sprite import Sprite
-from game.sprites.point import Point
 from game.sprites.player import Player
 from game.actions.draw_sprites_action import DrawSpritesAction
 from game.actions.control_sprites_action import ControlSpritesAction
@@ -27,7 +24,6 @@ from game.maps.map_seven import MapSeven
 from game.maps.map_eight import MapEight
 from game.maps.map_nine import MapNine
 from game.maps.map_ten import MapTen
-# from game.brick import Brick
 
 def main():
 
@@ -38,6 +34,7 @@ def main():
     cast['enemy_boundaries'] = []
     cast['doors'] = []
     cast['bushes'] = []
+    cast['text_sprites'] = []
     cast['enemies'] = []
     cast['player'] = [player]
 

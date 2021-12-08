@@ -27,7 +27,8 @@ class CheckDeathsAction(Action):
                                 if (bush.get_position().get_x() - enemy_position.get_x()) < (player.get_position().get_x() - enemy_position.get_x()):
                                     delete_player = False
                         if delete_player:
-                            cast['player'].remove(player)
+                            if player in cast['player']:
+                                cast['player'].remove(player)
 
                 if enemy.get_direction() == 'left':
                     enemy_position = enemy.get_position()
@@ -44,7 +45,8 @@ class CheckDeathsAction(Action):
                                 if (enemy_position.get_x() - bush.get_position().get_x()) < (enemy_position.get_x() - player.get_position().get_x()):
                                     delete_player = False
                         if delete_player:
-                            cast['player'].remove(player)
+                            if player in cast['player']:
+                                cast['player'].remove(player)
 
                 if enemy.get_direction() == 'up':
                     enemy_position = enemy.get_position()
@@ -61,7 +63,8 @@ class CheckDeathsAction(Action):
                                 if (enemy_position.get_y() - bush.get_position().get_y()) < (enemy_position.get_y() - player.get_position().get_y()):
                                     delete_player = False
                         if delete_player:
-                            cast['player'].remove(player)
+                            if player in cast['player']:
+                                cast['player'].remove(player)
 
                 if enemy.get_direction() == 'down':
                     enemy_position = enemy.get_position()
@@ -78,4 +81,5 @@ class CheckDeathsAction(Action):
                                 if (bush.get_position().get_y() - enemy_position.get_y()) < (player.get_position().get_y() - enemy_position.get_y()):
                                     delete_player = False
                         if delete_player:
-                            cast['player'].remove(player)
+                            if player in cast['player']:
+                                cast['player'].remove(player)

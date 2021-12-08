@@ -9,7 +9,48 @@ DEFAULT_FONT_SIZE = 20
 DEFAULT_TEXT_OFFSET = 4
 
 IMAGE_HERO = os.path.join(os.getcwd(), "./graphics/single.png")
-IMAGE_BUSH = os.path.join(os.getcwd(), "./graphics/terrain.png")
+
+IMAGES_HERO = {
+    'down_animations': [os.path.join(os.getcwd(), "./graphics/character_down_one.png"),
+    os.path.join(os.getcwd(), "./graphics/character_down_two.png"),
+    os.path.join(os.getcwd(), "./graphics/character_down_three.png")],
+
+    'left_animations': [os.path.join(os.getcwd(), "./graphics/character_left_one.png"),
+    os.path.join(os.getcwd(), "./graphics/character_left_two.png"),
+    os.path.join(os.getcwd(), "./graphics/character_left_three.png")],
+
+    'right_animations': [os.path.join(os.getcwd(), "./graphics/character_right_one.png"),
+    os.path.join(os.getcwd(), "./graphics/character_right_two.png"),
+    os.path.join(os.getcwd(), "./graphics/character_right_three.png")],
+
+    'up_animations': [os.path.join(os.getcwd(), "./graphics/character_up_one.png"),
+    os.path.join(os.getcwd(), "./graphics/character_up_two.png"),
+    os.path.join(os.getcwd(), "./graphics/character_up_three.png")]
+     }
+
+IMAGES_ENEMY = {
+    'down_animations': [os.path.join(os.getcwd(), "./graphics/enemy_down_one.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_down_two.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_down_three.png")],
+
+    'left_animations': [os.path.join(os.getcwd(), "./graphics/enemy_left_one.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_left_two.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_left_three.png")],
+
+    'right_animations': [os.path.join(os.getcwd(), "./graphics/enemy_right_one.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_right_two.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_right_three.png")],
+
+    'up_animations': [os.path.join(os.getcwd(), "./graphics/enemy_up_one.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_up_two.png"),
+    os.path.join(os.getcwd(), "./graphics/enemy_up_three.png")]
+     }
+
+IMAGES_GROUND = [os.path.join(os.getcwd(), "./graphics/grass_one.png"), os.path.join(os.getcwd(), "./graphics/grass_two.png"), os.path.join(os.getcwd(), "./graphics/grass_three.png"),
+    os.path.join(os.getcwd(), "./graphics/grass_four.png"), os.path.join(os.getcwd(), "./graphics/grass_five.png"), os.path.join(os.getcwd(), "./graphics/grass_six.png")]
+
+IMAGE_BUSH = os.path.join(os.getcwd(), "./graphics/bush.png")
+
 
 PLAYER_SPEED = 5
 ENEMY_SPEED = 2

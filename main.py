@@ -10,6 +10,7 @@ from game.actions.handle_vertical_collisions_action import HandleVerticalCollisi
 from game.actions.animate_sprites_action import AnimateSpritesAction
 from game.actions.update_enemies_action import UpdateEnemiesAction
 from game.actions.check_deaths_action import CheckDeathsAction
+from game.actions.check_buttons_action import CheckButtonsAction
 from game.interface.input_service import InputService
 from game.interface.output_service import OutputService
 from game.interface.physics_service import PhysicsService
@@ -29,14 +30,15 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-    player = Player(-constants.TILESIZE, -constants.TILESIZE)
+    cast['backgrounds'] = []
     cast['ground'] = []
     cast['enemy_boundaries'] = []
     cast['doors'] = []
     cast['bushes'] = []
+    cast['buttons'] = []
     cast['text_sprites'] = []
     cast['enemies'] = []
-    cast['player'] = [player]
+    cast['player'] = []
 
     maps = [MapOne(), MapTwo(), MapThree(), MapFour(), MapFive(), MapSix(), MapSeven(), MapEight(), MapNine(), MapTen()]
     
@@ -57,6 +59,7 @@ def main():
     update_enemies_action = UpdateEnemiesAction(physics_service)
     check_deaths_action = CheckDeathsAction(physics_service)
     animate_sprites_action = AnimateSpritesAction()
+    check_buttons_action = CheckButtonsAction(physics_service, input_service)
 
     # TODO: Create additional actions here and add them to the script
 
@@ -67,6 +70,8 @@ def main():
         check_deaths_action, animate_sprites_action]
 
     script["output"] = [draw_sprites_action]
+
+    script["check_buttons"] = [check_buttons_action]
 
     # Start the game
     output_service.open_window("Game")

@@ -9,5 +9,3 @@ class Map:
         for group in cast:
             if group != 'player':
                 cast[group].clear()
-        
-        assert len(cast['bushes']) == 0

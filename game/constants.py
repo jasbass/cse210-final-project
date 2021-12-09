@@ -51,6 +51,15 @@ IMAGES_GROUND = [os.path.join(os.getcwd(), "./graphics/grass_one.png"), os.path.
 
 IMAGE_BUSH = os.path.join(os.getcwd(), "./graphics/bush.png")
 
+IMAGE_INTRO_BACKROUND = os.path.join(os.getcwd(), "./graphics/introbackground.png")
+
+IMAGE_GAME_OVER = os.path.join(os.getcwd(), "./graphics/gameover.png")
+
+IMAGE_BUTTON = os.path.join(os.getcwd(), "./graphics/button.png")
+
+
+BUTTON_WIDTH = 150
+BUTTON_HEIGHT = 50
 
 PLAYER_SPEED = 5
 ENEMY_SPEED = 2

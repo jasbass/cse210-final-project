@@ -1,11 +1,11 @@
 from time import sleep
 from game.sprites.sprite import Sprite
 from game.sprites.point import Point
-from game.maps.map_one import MapOne
-from game.sprites.enemy_boundary import EnemyBoundary
 from game.sprites.player import Player
-from game.sprites.bush import Bush
-from game.sprites.enemy import Enemy
+from game.sprites.enemy_boundary import EnemyBoundary
+from game.sprites.button import Button
+from game.sprites.background import Background
+from game.sprites.text_sprite import TextSprite
 from game import constants
 import raylibpy
 
@@ -38,7 +38,7 @@ class Director:
         
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
-        self._intro_loop()
+        self._run_intro()
         self._change_map(self._maps[self._map_index])
 
         while self._keep_playing:
@@ -50,35 +50,82 @@ class Director:
                 # Game over
                 self._game_over_screen()
             
-            for player in self._cast['player']:
-                for door in self._cast['doors']:
-                    if self._physics_service.is_collision(player, door):
-                        self._get_next_map()
+            self._check_map_change()
 
             if raylibpy.window_should_close():
                 self._keep_playing = False
 
-    def _intro_loop(self):
-        pass
+    def _check_map_change(self):
+        for player in self._cast['player']:
+                for door in self._cast['doors']:
+                    if self._physics_service.is_collision(player, door):
+                        self._get_next_map()
+
+    def _run_intro(self):
+        self._maps[0].clear_map(self._cast)
+        intro_background = Background()
+        intro_background.set_image(constants.IMAGE_INTRO_BACKROUND)
+        self._cast['backgrounds'].append(intro_background)
+        button = Button(50, 50)
+        self._cast['buttons'].append(button)
+        text_one = TextSprite(10, 10, 'Escape The Goblins!!!')
+        text_two = TextSprite(60, 60, 'Play Game!')
+        self._cast['text_sprites'].append(text_one)
+        self._cast['text_sprites'].append(text_two)
+        intro = True
+        while intro:
+            
+            self._cue_action('output')
+            self._cue_action('check_buttons')
+
+            if button.is_pressed():
+                intro = False
+                self._map_index = 0
+                player = Player(0,0)
+                self._cast['player'] = [player]
+                self._change_map(self._maps[self._map_index])
+
+            if raylibpy.window_should_close():
+                intro = False
+                self._keep_playing = False
 
     def _get_next_map(self):
         self._map_index += 1
         if (len(self._maps) - 1) < self._map_index:
-            self._keep_playing = False
             self._game_won_screen()
         else:
             self._change_map(self._maps[self._map_index])
         
 
     def _game_won_screen(self):
-        pass
+        self._cast['player'].clear()
+        self._maps[0].clear_map(self._cast)
+        game_won_background = Background()
+        game_won_background.set_image(constants.IMAGE_INTRO_BACKROUND)
+        self._cast['backgrounds'].append(game_won_background)
+        button = Button(50, 50)
+        self._cast['buttons'].append(button)
+        text_one = TextSprite(10, 10, 'Congratulations! You\'ve escaped!')
+        text_two = TextSprite(60, 60, 'Play Again?')
+        self._cast['text_sprites'].append(text_one)
+        self._cast['text_sprites'].append(text_two)
+        game_won = True
+        while game_won:
+            
+            self._cue_action('output')
+            self._cue_action('check_buttons')
+
+            if button.is_pressed():
+                game_won = False
+                self._run_intro()
+
+            if raylibpy.window_should_close():
+                game_won = False
+                self._keep_playing = False
 
     def _change_map(self, map):
         map.clear_map(self._cast)
         map.generate_map(self._cast)
-
-    def _run_game_loop(self):
-        pass
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
@@ -90,4 +137,26 @@ class Director:
             action.execute(self._cast)
 
     def _game_over_screen(self):
-        print('Game Over')
+        self._maps[self._map_index].clear_map(self._cast)
+        intro_background = Background()
+        intro_background.set_image(constants.IMAGE_GAME_OVER)
+        self._cast['backgrounds'].append(intro_background)
+        button = Button(50, 50)
+        self._cast['buttons'].append(button)
+        text_one = TextSprite(10, 10, 'Game Over! Make sure you don\'t get seen!')
+        text_two = TextSprite(60, 60, 'Restart?')
+        self._cast['text_sprites'].append(text_one)
+        self._cast['text_sprites'].append(text_two)
+        game_over = True
+        while game_over:
+            
+            self._cue_action('output')
+            self._cue_action('check_buttons')
+
+            if button.is_pressed():
+                game_over = False
+                self._run_intro()
+
+            if raylibpy.window_should_close():
+                game_over = False
+                self._keep_playing = False

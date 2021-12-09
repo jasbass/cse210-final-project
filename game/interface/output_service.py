@@ -85,8 +85,8 @@ class OutputService:
         elif sprite.has_text():
             text = sprite.get_text()
             self.draw_text(x, y, text, True)
-        elif width > 0 and height > 0:
-            self.draw_box(x, y, width, height)
+        # elif width > 0 and height > 0:
+        #     self.draw_box(x, y, width, height)
         
     def draw_sprites(self, sprites):
         """Renders the given list of actors on the screen.

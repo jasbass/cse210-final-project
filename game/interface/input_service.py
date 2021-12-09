@@ -60,3 +60,9 @@ class InputService:
 
     def window_should_close(self):
         return raylibpy.window_should_close()
+
+    def get_mouse_pressed(self):
+        return raylibpy.is_mouse_button_pressed(0)
+
+    def get_mouse_pos(self):
+        return raylibpy.get_mouse_position()

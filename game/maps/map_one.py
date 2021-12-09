@@ -6,6 +6,7 @@ from game.sprites.enemy_boundary import EnemyBoundary
 from game.sprites.ground import Ground
 from game.sprites.point import Point
 from game.sprites.door import Door
+from game.sprites.text_sprite import TextSprite
 from game import constants
 
 class MapOne(Map):
@@ -13,18 +14,18 @@ class MapOne(Map):
         super().__init__()
         self._tilemap = [
         'BBBBBBBBBBBDDDBBBBBBBBBBB',
-        'BGGGGGGGG...............B',
+        'BGGGGGGGG.B...B.........B',
+        'B.......EGB...B.........B',
+        'BGGGGGGGG.B...B.........B',
+        'B.............B.GGGGGGGGB',
+        'B....B........BGE.......B',
+        'B...............GGGGGGGGB',
+        'BGGGGGGGG..........B....B',
         'B.......EG..............B',
         'BGGGGGGGG...............B',
         'B...............GGGGGGGGB',
         'B..............GE.......B',
-        'B...............GGGGGGGGB',
-        'BGGGGGGGG...............B',
-        'B.......EG..............B',
-        'BGGGGGGGG...............B',
-        'B...............GGGGGGGGB',
-        'B..............GE.......B',
-        'B...............GGGGGGGGB',
+        'B....B.B........GGGGGGGGB',
         'BGGGGGGGG...............B',
         'B.......EG..............B',
         'BGGGGGGGG.......GGGGGGGGB',
@@ -62,3 +63,13 @@ class MapOne(Map):
                 if column == 'D':
                     door = Door(x, y)
                     cast['doors'].append(door)
+
+        self._add_text_sprites(cast)
+    
+    def _add_text_sprites(self, cast):
+        x = 200
+        y = 200
+        text = 'How did you get here! This must be a goblin camp! \n Quick, run while they aren\'t looking!!'
+        text_sprite = TextSprite(x, y, text)
+        cast['text_sprites'].append(text_sprite)
+        

@@ -8,8 +8,8 @@ class Player(Sprite):
         super().__init__()
         self.set_image(constants.IMAGE_HERO)
         self.set_position(Point(x * constants.TILESIZE, y * constants.TILESIZE))
-        self.set_width(constants.TILESIZE)
-        self.set_height(constants.TILESIZE)
+        self.set_width(constants.TILESIZE - 4)
+        self.set_height(constants.TILESIZE - 4)
         self._facing = 'up'
         self._left_animations = constants.IMAGES_HERO['left_animations']
         self._right_animations = constants.IMAGES_HERO['right_animations']

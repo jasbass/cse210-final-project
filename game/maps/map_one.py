@@ -14,23 +14,23 @@ class MapOne(Map):
         super().__init__()
         self._tilemap = [
         'BBBBBBBBBBBDDDBBBBBBBBBBB',
-        'BGGGGGGGG.B...B.........B',
-        'B.......EGB...B.........B',
-        'BGGGGGGGG.B...B.........B',
-        'B.............B.GGGGGGGGB',
-        'B....B........BGE.......B',
-        'B...............GGGGGGGGB',
-        'BGGGGGGGG..........B....B',
-        'B.......EG..............B',
-        'BGGGGGGGG...............B',
-        'B...............GGGGGGGGB',
-        'B..............GE.......B',
-        'B....B.B........GGGGGGGGB',
-        'BGGGGGGGG...............B',
-        'B.......EG..............B',
-        'BGGGGGGGG.......GGGGGGGGB',
-        'B..............GE.......B',
-        'B...............GGGGGGGGB',
+        'B.........B...B.........B',
+        'Q.......RAB...B.........B',
+        'B.........B...B.........B',
+        'B.............B.........B',
+        'B....B........BAR.......Q',
+        'B.......................B',
+        'B..................B....B',
+        'Q.......RA..............B',
+        'B.......................B',
+        'B.......................B',
+        'B..............AR.......Q',
+        'B....B.B................B',
+        'B.......................B',
+        'Q.......RA..............B',
+        'B.......................B',
+        'B..............AR.......Q',
+        'B.......................B',
         'BBBBBBBBBBB.P.BBBBBBBBBBB',
         '...........BBB...........']
 
@@ -44,8 +44,8 @@ class MapOne(Map):
                 ground = Ground(x, y)
                 cast['ground'].append(ground)
 
-                if column == 'G':
-                    enemy_boundary = EnemyBoundary(x, y)
+                if column == 'A':
+                    enemy_boundary = EnemyBoundary(x, y, 'full_turn')
                     cast['enemy_boundaries'].append(enemy_boundary)
 
                 if column == 'B':
@@ -56,20 +56,26 @@ class MapOne(Map):
                     for player in cast['player']:
                         player.set_position(Point(x * constants.TILESIZE, y * constants.TILESIZE))
 
-                if column == 'E':
-                    enemy = Enemy(x, y)
+                if column == 'R':
+                    enemy = Enemy(x, y, 'right')
                     cast['enemies'].append(enemy)
 
                 if column == 'D':
                     door = Door(x, y)
                     cast['doors'].append(door)
+                    
+                if column == 'Q':
+                    bush = Bush(x, y)
+                    enemy_boundary = EnemyBoundary(x, y, 'full_turn')
+                    cast['bushes'].append(bush)
+                    cast['enemy_boundaries'].append(enemy_boundary)
 
         self._add_text_sprites(cast)
     
     def _add_text_sprites(self, cast):
         x = 200
         y = 200
-        text = 'How did you get here! This must be a goblin camp! \n Quick, run while they aren\'t looking!!'
+        text = 'How did you get here! This must be a goblin camp! \n Quick, run while they aren\'t looking!! (wasd)'
         text_sprite = TextSprite(x, y, text)
         cast['text_sprites'].append(text_sprite)
         

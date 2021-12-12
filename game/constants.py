@@ -66,6 +66,10 @@ ENEMY_SPEED = 2
 
 TILESIZE = 32
 
+SOUND_BACKGROUND = os.path.join(os.getcwd(), "./audio/background.wav")
+
+SOUND_BOING = os.path.join(os.getcwd(), "./audio/boing.wav")
+
 # IMAGE_BALL = os.path.join(os.getcwd(), "./batter/assets/ball.png")
 
 # SOUND_START = os.path.join(os.getcwd(), "./batter/assets/start.wav")

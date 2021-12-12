@@ -11,6 +11,7 @@ from game.actions.animate_sprites_action import AnimateSpritesAction
 from game.actions.update_enemies_action import UpdateEnemiesAction
 from game.actions.check_deaths_action import CheckDeathsAction
 from game.actions.check_buttons_action import CheckButtonsAction
+from game.actions.check_background_audio_action import CheckBackgroundAudioAction
 from game.interface.input_service import InputService
 from game.interface.output_service import OutputService
 from game.interface.physics_service import PhysicsService
@@ -41,6 +42,7 @@ def main():
     cast['player'] = []
 
     maps = [MapOne(), MapTwo(), MapThree(), MapFour(), MapFive(), MapSix(), MapSeven(), MapEight(), MapNine(), MapTen()]
+    background_audio = []
     
     # Create the script {key: tag, value: list}
     script = {}
@@ -57,9 +59,10 @@ def main():
     handle_vertical_collisions_action = HandleVerticalCollisionsAction(physics_service, audio_service)
     handle_horizontal_collisions_action = HandleHorizontalCollisionsAction(physics_service, audio_service)
     update_enemies_action = UpdateEnemiesAction(physics_service)
-    check_deaths_action = CheckDeathsAction(physics_service)
+    check_deaths_action = CheckDeathsAction(physics_service, audio_service)
     animate_sprites_action = AnimateSpritesAction()
     check_buttons_action = CheckButtonsAction(physics_service, input_service)
+    check_background_audio_action = CheckBackgroundAudioAction(audio_service)
 
     # TODO: Create additional actions here and add them to the script
 
@@ -67,7 +70,7 @@ def main():
 
     script["update"] = [move_sprites_vertical_action, handle_vertical_collisions_action, 
         move_sprites_horizontal_action, handle_horizontal_collisions_action, update_enemies_action,
-        check_deaths_action, animate_sprites_action]
+        check_deaths_action, animate_sprites_action, check_background_audio_action]
 
     script["output"] = [draw_sprites_action]
 

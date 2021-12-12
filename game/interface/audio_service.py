@@ -41,3 +41,11 @@ class AudioService:
         Closes the audio device at the end of the program.
         """
         raylibpy.close_audio_device()
+
+    def check_sound_playing(self, filename):
+        if filename not in self._sounds.keys():
+            loaded = raylibpy.load_sound(filename)
+            self._sounds[filename] = loaded
+
+        sound = self._sounds[filename]
+        return raylibpy.is_sound_playing(sound)

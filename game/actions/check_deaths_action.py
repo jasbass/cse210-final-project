@@ -5,8 +5,9 @@ from game.sprites.point import Point
 from game import constants
 
 class CheckDeathsAction(Action):
-    def __init__(self, physics_service):
+    def __init__(self, physics_service, audio_service):
         self._physics_service = physics_service
+        self._audio_service = audio_service
 
     def execute(self, cast):
         for player in cast['player']:
@@ -29,6 +30,7 @@ class CheckDeathsAction(Action):
                         if delete_player:
                             if player in cast['player']:
                                 cast['player'].remove(player)
+                                self._audio_service.play_sound(constants.SOUND_BOING)
 
                 if enemy.get_direction() == 'left':
                     enemy_position = enemy.get_position()
@@ -47,6 +49,8 @@ class CheckDeathsAction(Action):
                         if delete_player:
                             if player in cast['player']:
                                 cast['player'].remove(player)
+                                self._audio_service.play_sound(constants.SOUND_BOING)
+
 
                 if enemy.get_direction() == 'up':
                     enemy_position = enemy.get_position()
@@ -65,6 +69,8 @@ class CheckDeathsAction(Action):
                         if delete_player:
                             if player in cast['player']:
                                 cast['player'].remove(player)
+                                self._audio_service.play_sound(constants.SOUND_BOING)
+
 
                 if enemy.get_direction() == 'down':
                     enemy_position = enemy.get_position()
@@ -83,3 +89,4 @@ class CheckDeathsAction(Action):
                         if delete_player:
                             if player in cast['player']:
                                 cast['player'].remove(player)
+                                self._audio_service.play_sound(constants.SOUND_BOING)

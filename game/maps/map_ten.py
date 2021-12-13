@@ -107,6 +107,6 @@ class MapTen(Map):
     def _add_text_sprites(self, cast):
         x = 100
         y = 100
-        text = '                   CONGRATULATIONS!!! \nYou\'ve made it out of the goblin camp, you are safe now.'
+        text = '                      CONGRATULATIONS!!! \nYou\'ve made it out of the goblin camp, you are safe now.'
         text_sprite = TextSprite(x, y, text)
         cast['text_sprites'].append(text_sprite)

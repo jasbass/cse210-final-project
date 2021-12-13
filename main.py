@@ -42,7 +42,6 @@ def main():
     cast['player'] = []
 
     maps = [MapOne(), MapTwo(), MapThree(), MapFour(), MapFive(), MapSix(), MapSeven(), MapEight(), MapNine(), MapTen()]
-    background_audio = []
     
     # Create the script {key: tag, value: list}
     script = {}
